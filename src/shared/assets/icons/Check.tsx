@@ -1,4 +1,4 @@
-export default function DelIcon() {
+export default function CheckIcon() {
   return (
     <svg
       data-slot="icon"
@@ -11,7 +11,7 @@ export default function DelIcon() {
       width="100%"
       height="100%"
     >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5"></path>
     </svg>
   );
 }

@@ -1,11 +1,15 @@
 @import '~/shared/lib/mixes.scss';
 
 :root {
+  --gold-color:  rgb(168, 159, 5);
+
   --main-bg-color: #fff;
   --el-bg-color: #000;
   --main-tx-color: #000;
   --el-tx-color: #fff;
   --el-border-color: #000;
+  --el-border-color-active: var(--gold-color);
+  --main-tx-err-color: var(--gold-color);
 }
 
 html {

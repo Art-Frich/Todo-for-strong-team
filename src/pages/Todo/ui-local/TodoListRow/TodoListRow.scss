@@ -1,5 +1,27 @@
-.todo-list-row{
-  &__text{
+@import '~/shared/lib/mixes.scss';
+@import '~/shared/lib/mixes-font.scss';
 
+.todo-list-row{
+  @include flex-container($just: space-between, $gap: 30px);
+
+  &__text{
+    @include usual-text;
+
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    padding: 2px;
+
+    &_through{
+      text-decoration: line-through;
+    }
+
+    &_change{
+      box-shadow: 0 0 10px red;
+    }
+  }
+
+  &__container{
+    @include flex-container;
   }
 }

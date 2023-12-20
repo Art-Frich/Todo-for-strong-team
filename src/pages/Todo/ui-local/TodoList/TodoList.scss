@@ -1,8 +1,11 @@
+@import '~/shared/lib/mixes.scss';
+
 .todo-list{
+  @include flex-container($dir: column, $align: flex-start);
+
   list-style: none;
 
   &__element{
-    margin: 0;
-    padding: 0;
+    width: 100%;
   }
 }

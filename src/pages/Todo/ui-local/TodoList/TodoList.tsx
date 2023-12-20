@@ -16,8 +16,8 @@ export default function TodoList({ filtered }: ITodoList) {
     <ul className="todo-list mp-0">
       {(filtered ? filtered : todo).map((el, i) => {
         return (
-          <li key={i} className="todo-list__element">
-            <TodoListRow content={el} />
+          <li key={`${i}_${el}`} className="todo-list__element">
+            <TodoListRow content={el} i={i} />
           </li>
         );
       })}

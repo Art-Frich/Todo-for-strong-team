@@ -1,9 +1,11 @@
+@import '~/index.scss';
+
 .icon-btn {
   box-sizing: border-box;
   border-radius: 3px;
 
   cursor: pointer;
-  transition: all 0.2s linear;
+  transition: opacity .2s linear;
 
   &:hover {
     opacity: 0.7;
@@ -12,6 +14,11 @@
   &:active {
     scale: 0.97;
     opacity: 1;
+    border-color: var(--el-border-color-active);
+  }
+
+  &:focus {
+    outline: 3px solid var(--el-border-color-active);
   }
 
   &_normal {
