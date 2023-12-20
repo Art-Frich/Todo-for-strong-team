@@ -1,0 +1,19 @@
+.footer {
+  min-width: 100%;
+  min-height: 10vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  &__title {
+    margin: 0;
+    font-size: 24px;
+  }
+
+  &__subtitle {
+    font-size: 20px;
+  }
+}
