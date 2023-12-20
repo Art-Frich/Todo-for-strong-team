@@ -1,18 +1,19 @@
-@import '../../lib/mixes.scss';
+@import '~/shared/lib/mixes.scss';
+@import '~/shared/lib/mixes-font.scss';
 
 .todo-searcher {
   @include flex-container($dir: column);
 
   &__input {
+  @include usual-text();
+
     width: 100%;
     height: 32px;
 
     padding: 2px 5px;
-    font-size: 20px;
 
     &-container {
-      @include flex-container($just: space-between);
-
+      display: contents;
       min-width: 300px;
     }
 
@@ -29,7 +30,6 @@
   }
 
   &__er {
-    font-size: 18px;
-    color: rgb(168, 159, 5);
+    @include usual-text(18px, rgb(168, 159, 5));
   }
 }

@@ -1,12 +1,11 @@
 import './TodoSearcher.scss';
 
-import IconBtn from '../IconBtn/IconBtn';
+import IconBtn from '../../../../shared/ui/IconBtn/IconBtn';
 import { useState } from 'react';
-import { useAppDispatch, useAppSelector } from '~/lib/reduxHooks';
-import { add } from '~/store/slices/todoSlice';
-import { AddIcon, SearchIcon, XIcon } from '~/assets/icons';
-import { selectTodo } from '~/store/store';
-import { Tfiltered } from '../TodoList/TodoList';
+import { useAppDispatch, useAppSelector } from '~/shared/lib/hooks/reduxHooks';
+import { add, selectTodo } from '~/entities/todo-element/model/todoSlice';
+import { AddIcon, SearchIcon, XIcon } from '~/shared/assets/icons';
+import { Tfiltered } from '../../Todo';
 
 interface ITodoSearcher {
   setVisible: (newVisible: Tfiltered) => void;

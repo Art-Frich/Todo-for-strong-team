@@ -1,0 +1,18 @@
+@import '~/shared/lib/mixes.scss';
+@import '~/shared/lib/mixes-font.scss';
+
+.footer {
+  @include flex-container($dir: column);
+
+  min-width: 100%;
+  min-height: 10vh;
+
+  &__title {
+    margin: 0;
+    @include usual-text(24px);
+  }
+
+  &__subtitle {
+    @include usual-text;
+  }
+}

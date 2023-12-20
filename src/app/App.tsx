@@ -1,5 +1,5 @@
-import Layout from '../Layout/Layout';
-import TodoList from '../TodoList/TodoList';
+import Layout from '../shared/ui/Layout/Layout';
+import TodoList from '../pages/Todo/Todo';
 import './App.css';
 
 function App() {
