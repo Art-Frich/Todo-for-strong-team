@@ -1,23 +1,25 @@
-import IconBtn from '~/shared/ui/IconBtn/IconBtn';
 import './TodoListRow.scss';
+import IconBtn from '~/shared/ui/IconBtn/IconBtn';
 import { ChangeIcon, CheckIcon, DelIcon } from '~/shared/assets';
 import Checkbox from '~/shared/ui/Checkbox/Checkbox';
 import { useEffect, useRef, useState } from 'react';
 import { useAppDispatch } from '~/shared/lib/hooks/reduxHooks';
-import { changeTodo, delTodo } from '~/entities/todo-element/model/todoSlice';
+import { TTodo, assertPriority, changeTodo, delTodo } from '~/entities/todo-element';
+import TodoSelectPriority from '../TodoSelectPriority/TodoSelectPriority';
 
 interface ITodoListRow {
-  content: string;
+  content: TTodo;
   i: number;
 }
 export default function TodoListRow({ content, i }: ITodoListRow) {
+  const { isEnd, text, priority, date } = content;
   const dispatch = useAppDispatch();
-  const ref = useRef<HTMLInputElement | null>(null);
+  const refInput = useRef<HTMLInputElement | null>(null);
+  const refSelect = useRef<HTMLSelectElement | null>(null);
   const [isChanged, setIsChanged] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckboxClick = () => {
-    setIsChecked((prev) => !prev);
+    dispatch(changeTodo({ i, val: { ...content, isEnd: !isEnd } }));
   };
 
   const handleChangeClick = () => {
@@ -30,9 +32,18 @@ export default function TodoListRow({ content, i }: ITodoListRow) {
 
   useEffect(() => {
     if (isChanged) {
-      ref.current?.focus();
-    } else if (ref.current?.value) {
-      dispatch(changeTodo({ i, val: ref.current.value }));
+      refInput.current?.focus();
+    } else if (refInput.current?.value.length && refSelect.current?.value) {
+      const prior = Number(refSelect.current.value);
+      assertPriority(prior);
+      dispatch(
+        changeTodo({
+          i,
+          val: { ...content, text: refInput.current.value, priority: prior },
+        }),
+      );
+    } else {
+      refInput.current!.value = text;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, isChanged]);
@@ -40,21 +51,34 @@ export default function TodoListRow({ content, i }: ITodoListRow) {
   return (
     <div className="todo-list-row">
       <div className="todo-list-row__container">
-        <Checkbox onClick={handleCheckboxClick} />
+        <Checkbox onClick={handleCheckboxClick} value={isEnd} />
+        <TodoSelectPriority val={priority} type="small" ref={refSelect} unDisplay={!isChanged} />
+        <span className={`todo-list-row__info ' ${isChanged ? 'un-display' : ''}`} title="Текущий приоритет задачи">
+          {priority}
+        </span>
         <input
           className={`todo-list-row__text
-          ${isChecked ? 'todo-list-row__text_through' : ''}
+          ${isEnd ? 'todo-list-row__text_through' : ''}
           ${isChanged ? 'todo-list-row__text_change' : ''}
           mp-0`}
-          defaultValue={content}
+          defaultValue={text}
           disabled={!isChanged}
-          ref={ref}
+          ref={refInput}
+          title="Суть вашего дела"
         />
+        <span className="todo-list-row__info" title="Дата создания дела">
+          {date}
+        </span>
       </div>
 
       <div className="todo-list-row__container">
-        <IconBtn Icon={isChanged ? CheckIcon : ChangeIcon} type="small" onClick={handleChangeClick} />
-        <IconBtn Icon={DelIcon} type="small" onClick={handlerDelClick} />
+        <IconBtn
+          Icon={isChanged ? CheckIcon : ChangeIcon}
+          type="small"
+          onClick={handleChangeClick}
+          title="Редактировать запись"
+        />
+        <IconBtn Icon={DelIcon} type="small" onClick={handlerDelClick} title="Удалить запись" />
       </div>
     </div>
   );

@@ -5,11 +5,16 @@
 
   --main-bg-color: #fff;
   --el-bg-color: #000;
+
   --main-tx-color: #000;
+  --main-tx-color-info: grey;
+  --main-tx-err-color: var(--gold-color);
   --el-tx-color: #fff;
+
   --el-border-color: #000;
   --el-border-color-active: var(--gold-color);
-  --main-tx-err-color: var(--gold-color);
+
+  --el-input-shadow-color-active: var(--gold-color);
 }
 
 html {

@@ -12,16 +12,23 @@
     border-radius: 5px;
     padding: 2px;
 
+    cursor: move;
+
     &_through {
       text-decoration: line-through;
     }
 
     &_change {
-      box-shadow: 0 0 10px red;
+      box-shadow: 0 0 10px var(--el-input-shadow-color-active);
+      cursor: text;
     }
   }
 
   &__container {
     @include flex-container;
+  }
+
+  &__info{
+    @include usual-text($fs: 16px, $color: var(--main-tx-color-info));
   }
 }

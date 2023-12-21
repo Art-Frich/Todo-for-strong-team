@@ -3,9 +3,10 @@ import './TodoSearcher.scss';
 import IconBtn from '../../../../shared/ui/IconBtn/IconBtn';
 import { useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '~/shared/lib/hooks/reduxHooks';
-import { add, selectTodo } from '~/entities/todo-element/model/todoSlice';
 import { AddIcon, SearchIcon, XIcon } from '~/shared/assets';
 import { Tfiltered } from '../../Todo';
+import { add, assertPriority, formatDate, selectTodo } from '~/entities/todo-element';
+import TodoSelectPriority from '../TodoSelectPriority/TodoSelectPriority';
 
 interface ITodoSearcher {
   setVisible: (newVisible: Tfiltered) => void;
@@ -14,7 +15,8 @@ interface ITodoSearcher {
 export default function TodoSearcher({ setVisible }: ITodoSearcher) {
   const dispatch = useAppDispatch();
   const todo = useAppSelector(selectTodo);
-  const ref = useRef<HTMLInputElement | null>(null);
+  const refInput = useRef<HTMLInputElement | null>(null);
+  const refSelect = useRef<HTMLSelectElement | null>(null);
   const [er, setEr] = useState<string | null>(null);
   const [value, setValue] = useState('');
 
@@ -24,13 +26,16 @@ export default function TodoSearcher({ setVisible }: ITodoSearcher) {
   };
 
   const handleAddClick = () => {
-    if (value) {
+    if (value && refSelect.current?.value) {
+      const prior = Number(refSelect.current.value);
+      assertPriority(prior);
+
       setEr(null);
-      dispatch(add(value));
+      dispatch(add({ isEnd: false, text: value, priority: prior, date: formatDate(new Date()) }));
       setVisible(null);
       toClearInput();
-      if (ref.current) {
-        ref.current.focus();
+      if (refInput.current) {
+        refInput.current.focus();
       }
     } else {
       setEr('Я не буду добавлять пустую строку.');
@@ -43,7 +48,7 @@ export default function TodoSearcher({ setVisible }: ITodoSearcher) {
       setVisible(
         todo.filter((val) => {
           const regExp = new RegExp(value);
-          return regExp.test(val);
+          return regExp.test(val.text);
         }),
       );
     } else {
@@ -59,11 +64,19 @@ export default function TodoSearcher({ setVisible }: ITodoSearcher) {
     <article className="todo-searcher">
       <div className="todo-searcher__line">
         <div className="todo-searcher__input-container">
-          {value && <IconBtn Icon={XIcon} onClick={toClearInput} type="small" />}
-          <input className="todo-searcher__input" value={value} onChange={onChangeInput} autoFocus ref={ref} />
+          {value && <IconBtn Icon={XIcon} onClick={toClearInput} type="small" title="Удалить написанное" />}
+          <TodoSelectPriority val={3} ref={refSelect} />
+          <input
+            className="todo-searcher__input"
+            value={value}
+            onChange={onChangeInput}
+            autoFocus
+            ref={refInput}
+            title="Укажите суть дела"
+          />
         </div>
-        <IconBtn Icon={AddIcon} onClick={handleAddClick} />
-        <IconBtn Icon={SearchIcon} onClick={handleFilterClick} />
+        <IconBtn Icon={AddIcon} onClick={handleAddClick} title="Добавить к списку" />
+        <IconBtn Icon={SearchIcon} onClick={handleFilterClick} title="Найти в списке по описанию" />
       </div>
       <span className="todo-searcher__er">{er}</span>
     </article>

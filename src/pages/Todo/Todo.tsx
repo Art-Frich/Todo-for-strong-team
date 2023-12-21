@@ -3,8 +3,9 @@ import './Todo.scss';
 import TodoSearcher from './ui-local/TodoSearcher/TodoSearcher';
 import { useState } from 'react';
 import TodoList from './ui-local/TodoList/TodoList';
+import { TTodo } from '~/entities/todo-element';
 
-export type Tfiltered = string[] | null;
+export type Tfiltered = TTodo[] | null;
 
 export default function Todo() {
   const [filtered, setFiltered] = useState<Tfiltered>(null);

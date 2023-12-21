@@ -1,4 +1,5 @@
 @import '~/shared/lib/mixes.scss';
+@import '~/shared/lib/mixes-font.scss';
 
 .todo-list {
   @include flex-container($dir: column, $align: flex-start);
@@ -6,6 +7,20 @@
   list-style: none;
 
   &__element {
+    padding: 0 0 0 5px;
     width: 100%;
+    cursor: move;
+
+    &_drag{
+      opacity: 0.5;
+    }
+
+    &_for-drag{
+      outline: 2px dashed var(--el-border-color-active);
+    }
+  }
+
+  &__info{
+    @include usual-text($fs: 16px, $color: var(--main-tx-color-info))
   }
 }
