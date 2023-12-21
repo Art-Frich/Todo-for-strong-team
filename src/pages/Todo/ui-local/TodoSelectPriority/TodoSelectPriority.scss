@@ -1,12 +1,12 @@
 @import '~/shared/lib/mixes-font.scss';
 
-.select-prior{
-  &_small{
+.select-prior {
+  &_small {
     @include usual-text($fs: 16px);
     height: 24px;
   }
 
-  &_medium{
+  &_medium {
     @include usual-text($fs: 20px);
     height: 40px;
   }

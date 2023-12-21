@@ -17,7 +17,7 @@
 ![image](https://img.shields.io/badge/React-100000?style=for-the-badge&logo=react)
 ![image](https://img.shields.io/badge/Redux_Toolkit-100000?style=for-the-badge&logo=redux)
 ![image](https://img.shields.io/badge/Type_Script-100000?style=for-the-badge&logo=typescript)
-![image](https://img.shields.io/badge/Vite-100000?style=for-the-badge)
+![image](https://img.shields.io/badge/Vite-100000?style=for-the-badge&logo=vite)
 ![image](https://img.shields.io/badge/Sass-100000?style=for-the-badge&logo=sass)
 ![image](https://img.shields.io/badge/Eslint-100000?style=for-the-badge&logo=eslint)
 ![image](https://img.shields.io/badge/Prettier-100000?style=for-the-badge&logo=prettier)
@@ -26,11 +26,11 @@
 ### Чтобы развернуть локально:
 
 ```
-git clone (укажите ssh репозитория)
+git clone git@github.com:Art-Frich/Todo-for-strong-team.git
 cd ./frontend
 npm i
 npm run dev
-Пройти по ссылке из терминала
+Пройти по ссылке из терминала или используйте http://localhost:5173/
 ```
 
 ### Руководство разработчика

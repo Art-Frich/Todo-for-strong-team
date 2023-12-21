@@ -1,15 +1,15 @@
 @import '~/shared/lib/mixes.scss';
 @import '~/shared/lib/mixes-font.scss';
 
-.todo-filters{
+.todo-filters {
   @include flex-container($gap: 0);
 
-  &__div{
+  &__div {
     min-height: 30px;
     border-left: 1px solid var(--el-border-color);
   }
 
-  &__btn{
+  &__btn {
     @include usual-text;
 
     padding: 5px 10px;
@@ -18,13 +18,15 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: opacity .2s linear, box-shadow .1s ease-in;
+    transition:
+      opacity 0.2s linear,
+      box-shadow 0.1s ease-in;
 
-    &:hover{
-      opacity: .7;
+    &:hover {
+      opacity: 0.7;
     }
 
-    &:active{
+    &:active {
       scale: 0.97;
       box-shadow: 0 0 5px var(--el-input-shadow-color-active);
       opacity: 1;

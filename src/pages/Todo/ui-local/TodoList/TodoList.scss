@@ -11,16 +11,16 @@
     width: 100%;
     cursor: move;
 
-    &_drag{
+    &_drag {
       opacity: 0.5;
     }
 
-    &_for-drag{
+    &_for-drag {
       outline: 2px dashed var(--el-border-color-active);
     }
   }
 
-  &__info{
-    @include usual-text($fs: 16px, $color: var(--main-tx-color-info))
+  &__info {
+    @include usual-text($fs: 16px, $color: var(--main-tx-color-info));
   }
 }
