@@ -1,36 +1,47 @@
 # My ToDo
 
-Description will be here soon.
+Тестовый проект для Stront-Team.
 
-## Technology stack:
+### Возможности
 
-- **Language:** JavaScript, TypeScript
-- **Framework:** React
-- **Build:** Vite
-- **Stylesheet:** Storybook, Sass
-- **Lint:** ESLint, Prettier
-- **Git hooks:** Husky
+- добавлять дела
+- удалять дела
+- редактировать дела
+- помечать дела как выполненные
+- выполнять по ним поиск
+- сортировка по имени, дате, важности
+- drag and drop
 
-## Getting Started
+### Инструменты:
 
-Here the instruction how you may set up your project locally.
+![image](https://img.shields.io/badge/React-100000?style=for-the-badge&logo=react)
+![image](https://img.shields.io/badge/Redux_Toolkit-100000?style=for-the-badge&logo=redux)
+![image](https://img.shields.io/badge/Type_Script-100000?style=for-the-badge&logo=typescript)
+![image](https://img.shields.io/badge/Vite-100000?style=for-the-badge)
+![image](https://img.shields.io/badge/Sass-100000?style=for-the-badge&logo=sass)
+![image](https://img.shields.io/badge/Eslint-100000?style=for-the-badge&logo=eslint)
+![image](https://img.shields.io/badge/Prettier-100000?style=for-the-badge&logo=prettier)
+![image](https://img.shields.io/badge/Husky-100000?style=for-the-badge&logo=husky)
 
-### Installation
+### Чтобы развернуть локально:
 
-1. Clone the repo
-2. Install NPM packages:
-
-```sh
-$ npm i
 ```
-
-### Usage
-
-In the project directory, you can run:
-
-```sh
+git clone (укажите ssh репозитория)
+cd ./frontend
+npm i
 npm run dev
+Пройти по ссылке из терминала
 ```
 
-Runs the app in the development mode.\
-Open [http://localhost:5173/Frontend/](http://localhost:5173/Frontend/) to view it in the browser.
+### Руководство разработчика
+
+| Скрипт       | Описание                                                                                                     |
+| ------------ | ------------------------------------------------------------------------------------------------------------ |
+| `dev`        | Запускает приложение в режиме разработки с использованием Vite.                                              |
+| `build`      | Собирает приложение для продакшена с использованием TypeScript и Vite.                                       |
+| `preview`    | Предварительный просмотр собранной продакшн версии локально.                                                 |
+| `format`     | Проверяет форматирование кода с использованием Prettier.                                                     |
+| `format-fix` | Исправляет проблемы с форматированием кода с использованием Prettier.                                        |
+| `lint`       | Линтит файлы TypeScript и TypeScript React с использованием ESLint.                                          |
+| `lint-fix`   | Исправляет проблемы, выявленные линтингом, с использованием ESLint.                                          |
+| `commit`     | Выполняет предкоммит-проверки, добавляет изменения и использует commitizen для стандартизированных коммитов. |

@@ -16,13 +16,10 @@ export const todoSlice = createSlice({
       state[i] = { ...val };
     },
     delTodo: (state, action: PayloadAction<number>) => {
-      // const i = action.payload;
-      // return state.filter((_, index) => index !== i);
       state.splice(action.payload, 1);
     },
     replaceTodo: (state, action: PayloadAction<{ iDrag: number; iForDrag: number }>) => {
       const { iDrag, iForDrag } = action.payload;
-      // TODO: функция сужения типа
       [state[iDrag], state[iForDrag]] = [state[iForDrag]!, state[iDrag]!];
     },
     filterBy: (state, action: PayloadAction<'priority' | 'alphabet' | 'date'>) => {

@@ -21,7 +21,6 @@ export default function TodoList({ filtered }: ITodoList) {
   const handlerDragEnd = () => {
     setIndexDrag(null);
     setIndexForDrag(null);
-    // TODO: по хорошему нужно написать функцию сужения типа
     dispatch(replaceTodo({ iDrag: indexDrag!, iForDrag: indexForDrag! }));
   };
   const handlerDragOver = (e: React.DragEvent<HTMLLIElement>, i: number) => {
