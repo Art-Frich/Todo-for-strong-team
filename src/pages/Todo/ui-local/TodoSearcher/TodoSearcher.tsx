@@ -9,7 +9,7 @@ import { add, assertPriority, formatDate, selectTodo } from '~/entities/todo-ele
 import TodoSelectPriority from '../TodoSelectPriority/TodoSelectPriority';
 
 interface ITodoSearcher {
-  setVisible: (newVisible: Tfiltered) => void;
+  setVisible: (newVisible: Tfiltered | (() => Tfiltered)) => void;
 }
 
 export default function TodoSearcher({ setVisible }: ITodoSearcher) {
@@ -45,12 +45,13 @@ export default function TodoSearcher({ setVisible }: ITodoSearcher) {
   const handleFilterClick = () => {
     if (value) {
       setEr(null);
-      setVisible(
-        todo.filter((val) => {
-          const regExp = new RegExp(value);
+      setVisible(() => {
+        const res = [...todo].filter((val) => {
+          const regExp = new RegExp(value, 'i');
           return regExp.test(val.text);
-        }),
-      );
+        });
+        return res;
+      });
     } else {
       setEr('Я не буду искать пустую строку.');
     }

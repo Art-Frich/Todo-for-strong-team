@@ -17,6 +17,7 @@ export default function TodoListRow({ content, i }: ITodoListRow) {
   const refInput = useRef<HTMLInputElement | null>(null);
   const refSelect = useRef<HTMLSelectElement | null>(null);
   const [isChanged, setIsChanged] = useState(false);
+  const [isFirst, setIsFirst] = useState(true); // при первой отрисовке никаких срабатываний
 
   const handleCheckboxClick = () => {
     dispatch(changeTodo({ i, val: { ...content, isEnd: !isEnd } }));
@@ -31,20 +32,25 @@ export default function TodoListRow({ content, i }: ITodoListRow) {
   };
 
   useEffect(() => {
-    if (isChanged) {
-      refInput.current?.focus();
-    } else if (refInput.current?.value.length && refSelect.current?.value) {
-      const prior = Number(refSelect.current.value);
-      assertPriority(prior);
-      dispatch(
-        changeTodo({
-          i,
-          val: { ...content, text: refInput.current.value, priority: prior },
-        }),
-      );
+    if (!isFirst) {
+      if (isChanged) {
+        refInput.current?.focus();
+      } else if (refInput.current?.value.length && refSelect.current?.value) {
+        const prior = Number(refSelect.current.value);
+        assertPriority(prior);
+        dispatch(
+          changeTodo({
+            i,
+            val: { ...content, text: refInput.current.value, priority: prior },
+          }),
+        );
+      } else {
+        refInput.current!.value = text;
+      }
     } else {
-      refInput.current!.value = text;
+      setIsFirst(false);
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, isChanged]);
 
