@@ -26,7 +26,7 @@ module.exports = {
     '@typescript-eslint/dot-notation': 'off',
 
     // @TODO: для удобства разработки поставил в off
-    '@typescript-eslint/no-unused-vars': 'off',
+    // '@typescript-eslint/no-unused-vars': 'off',
   },
   settings: {
     react: {

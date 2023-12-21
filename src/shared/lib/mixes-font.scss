@@ -1,4 +1,4 @@
-@mixin usual-text($fs: 20px, $color: var(--main-tx-color)){
+@mixin usual-text($fs: 20px, $color: var(--main-tx-color)) {
   color: $color;
   font-size: $fs;
   font-weight: 400;

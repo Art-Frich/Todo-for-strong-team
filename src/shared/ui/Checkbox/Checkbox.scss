@@ -30,7 +30,7 @@
     .tick {
       stroke-dasharray: 20px;
       stroke-dashoffset: 20px;
-      transition: stroke-dashoffset .2s ease-out;
+      transition: stroke-dashoffset 0.2s ease-out;
     }
   }
 }

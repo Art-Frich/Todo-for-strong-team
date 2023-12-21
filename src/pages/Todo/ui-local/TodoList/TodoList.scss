@@ -1,11 +1,11 @@
 @import '~/shared/lib/mixes.scss';
 
-.todo-list{
+.todo-list {
   @include flex-container($dir: column, $align: flex-start);
 
   list-style: none;
 
-  &__element{
+  &__element {
     width: 100%;
   }
 }
