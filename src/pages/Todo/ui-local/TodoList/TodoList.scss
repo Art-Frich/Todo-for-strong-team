@@ -2,7 +2,7 @@
 @import '~/shared/lib/mixes-font.scss';
 
 .todo-list {
-  @include flex-container($dir: column, $align: flex-start);
+  @include flex-container($dir: column, $align: flex-start, $gap: 20px);
 
   list-style: none;
 

@@ -17,7 +17,7 @@ export default function TodoListRow({ content, i }: ITodoListRow) {
   const refInput = useRef<HTMLInputElement | null>(null);
   const refSelect = useRef<HTMLSelectElement | null>(null);
   const [isChanged, setIsChanged] = useState(false);
-  const [isFirst, setIsFirst] = useState(true); // при первой отрисовке никаких срабатываний
+  const [isFirst, setIsFirst] = useState(true); // при первой отрисовке никаких
 
   const handleCheckboxClick = () => {
     dispatch(changeTodo({ i, val: { ...content, isEnd: !isEnd } }));
@@ -36,6 +36,7 @@ export default function TodoListRow({ content, i }: ITodoListRow) {
       if (isChanged) {
         refInput.current?.focus();
       } else if (refInput.current?.value.length && refSelect.current?.value) {
+        console.log('suka');
         const prior = Number(refSelect.current.value);
         assertPriority(prior);
         dispatch(
@@ -72,12 +73,12 @@ export default function TodoListRow({ content, i }: ITodoListRow) {
           ref={refInput}
           title="Суть вашего дела"
         />
-        <span className="todo-list-row__info" title="Дата создания дела">
-          {date}
-        </span>
       </div>
 
       <div className="todo-list-row__container">
+        <span className="todo-list-row__info" title="Дата создания дела">
+          {date}
+        </span>
         <IconBtn
           Icon={isChanged ? CheckIcon : ChangeIcon}
           type="small"

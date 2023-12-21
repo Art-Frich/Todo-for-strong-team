@@ -74,6 +74,7 @@ export default function TodoSearcher({ setVisible }: ITodoSearcher) {
             autoFocus
             ref={refInput}
             title="Укажите суть дела"
+            placeholder="Добавь или найди"
           />
         </div>
         <IconBtn Icon={AddIcon} onClick={handleAddClick} title="Добавить к списку" />
