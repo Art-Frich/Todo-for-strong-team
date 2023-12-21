@@ -1,7 +1,7 @@
 @import '~/shared/lib/mixes.scss';
 @import '~/shared/lib/mixes-font.scss';
 
-.footer {
+.footer{
   @include flex-container($dir: column);
 
   min-width: 100%;

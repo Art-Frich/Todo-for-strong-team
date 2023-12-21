@@ -28,7 +28,7 @@
     @include flex-container;
   }
 
-  &__info{
+  &__info {
     @include usual-text($fs: 16px, $color: var(--main-tx-color-info));
   }
 }
