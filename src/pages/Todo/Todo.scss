@@ -1,5 +1,5 @@
 @import '~/shared/lib/mixes.scss';
 
 .todo {
-  @include flex-container($dir: column);
+  @include flex-container($dir: column, $gap: 30px);
 }
