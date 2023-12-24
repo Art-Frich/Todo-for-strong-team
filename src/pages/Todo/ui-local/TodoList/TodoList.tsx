@@ -34,7 +34,7 @@ export default function TodoList({ filtered }: ITodoList) {
         getVisible().map((el, i) => {
           return (
             <li
-              key={`${i}_${new Date()}`}
+              key={`${i}_${el.date}_${el.text}`}
               className={`todo-list__element
             ${indexDrag === i ? 'todo-list__element_drag' : ''}
             ${indexForDrag === i && indexForDrag !== indexDrag ? 'todo-list__element_for-drag' : ''}`}

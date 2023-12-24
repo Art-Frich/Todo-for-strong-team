@@ -36,7 +36,6 @@ export default function TodoListRow({ content, i }: ITodoListRow) {
       if (isChanged) {
         refInput.current?.focus();
       } else if (refInput.current?.value.length && refSelect.current?.value) {
-        console.log('suka');
         const prior = Number(refSelect.current.value);
         assertPriority(prior);
         dispatch(
