@@ -1,6 +1,6 @@
 # My ToDo
 
-[Тестовый проект для Stront-Team](https://art-frich.github.io/Todo-for-strong-team/)
+[Ссылка на деплой](https://art-frich.github.io/Todo-for-strong-team/)
 
 ### Возможности
 
